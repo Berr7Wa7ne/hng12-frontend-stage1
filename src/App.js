@@ -78,7 +78,7 @@ const App = () => {
       saveScoreToStorage();
       initializeGame();
     }
-  }, [countdown]);
+  }, [countdown], [saveScoreToStorage]);
 
   return (
     <div className="app">
