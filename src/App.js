@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./App.css";
 
 const getRandomColor = () => {
@@ -14,16 +14,15 @@ const App = () => {
   const [win, setWin] = useState(0);
   const [lose, setLose] = useState(0);
   const [countdown, setCountdown] = useState(7);
-
-  const saveScoreToStorage = () => {
-    localStorage.setItem("win", win.toString());
-    localStorage.setItem("lose", lose.toString());
-    localStorage.setItem("expire", new Date().getTime().toString());
-  };
-
   const [color, setColor] = useState("");
   const [answers, setAnswers] = useState([]);
   const [status, setStatus] = useState(null);
+
+  const saveScoreToStorage = useCallback(() => {
+    localStorage.setItem("win", win.toString());
+    localStorage.setItem("lose", lose.toString());
+    localStorage.setItem("expire", new Date().getTime().toString());
+  }, [win, lose]);
 
   const initializeGame = () => {
     setCountdown(7);
@@ -41,12 +40,12 @@ const App = () => {
     new Promise((resolve) => {
       if (answer === color) {
         setStatus("WIN");
-        setWin(win + 1);
+        setWin((prev) => prev + 1);
         initializeGame();
         resolve();
       } else {
         setStatus("LOSE");
-        setLose(lose + 1);
+        setLose((prev) => prev + 1);
         resolve();
       }
     }).then(() => {
@@ -78,7 +77,7 @@ const App = () => {
       saveScoreToStorage();
       initializeGame();
     }
-  }, [countdown, saveScoreToStorage]);
+  }, [countdown, saveScoreToStorage]); // ✅ Fixed dependency array
 
   return (
     <div className="app">
