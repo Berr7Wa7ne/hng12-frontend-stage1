@@ -1,0 +1,135 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #032B44;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 2em;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heading-section {
+  flex: 1;
+  color: #fff;
+  justify-items: center;
+}
+
+.heading {
+  font-size: 20px;
+  margin-bottom: 0.5em;
+}
+.heading1 {
+  font-size: 25px;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.score {
+  font-size: 1.5em;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.score p {
+  margin: 0.5em 0;
+}
+
+.game-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colorBox {
+  margin-top: 1em;
+  width: 200px;
+  height: 200px;
+  border-radius: 1em;
+  background-color: aqua;
+}
+
+/* Answer Options */
+.answers {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Answer Buttons */
+.button {
+  color: #fff;
+  background-color: #4caf50;
+  font-size: 1.3em;
+  padding: 15px;
+  border-radius: 0.8em;
+  border: none;
+  outline: none;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.review {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.correct {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
+
+.countdown {
+  color: red;
+}
+
+.newGameButton {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #000;
+  background-color: #ffffff;
+  margin-top: 2em;
+  padding: 15px;
+  border-radius: 0.8em;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .answers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
